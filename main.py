@@ -705,7 +705,7 @@ def studentLevelOverallLeaderBoardPage():
         for lts in level_three_students:
             c=c+1
             level_three_leader_dict={
-                "fullName":lts.firstName +" "+los.lastName,
+                "fullName":lts.firstName +" "+lts.lastName,
                 "className":lts.className,
                 "rollNumber":lts.rollNumber,
                 "rank":c,
