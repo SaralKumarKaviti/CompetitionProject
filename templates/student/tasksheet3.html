@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Student Exam</title>
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/style-responsive.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/style.css')}}">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/templatemo_main.css')}}">
+  <style>
+
+
+
+.content-panel {
+  background: #d1c3c3;
+    box-shadow: 0px 3px 2px #aab2bd;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    opacity: 0.8;
+}
+.wrapper{
+    margin-top: 0px !important;
+}
+.newclass{
+  display: flex;
+  width: 100%;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #c0c0c0;
+  color: red;
+  font-family: sans-serif,serif;
+  font-size: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+@media screen and (max-width: 750px) {
+    
+.newclass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-panel {
+  background: #d1c3c3;
+    box-shadow: 0px 3px 2px #aab2bd;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    opacity: 0.8;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #c0c0c0;
+  color: red;
+  font-family: sans-serif,serif;
+  font-size: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+}
+body {
+  background:floralwhite;
+  background-image:url("{{url_for('static',filename='student/leaderboard/img/3.jpeg')}}");
+}
+
+  </style>
+  
+</head>
+<body>
+<section  style="width: 100%;" >
+    <section class="wrapper site-min-height">
+      
+        <div class="col-lg-12 mt">
+          <div class="row content-panel">
+            <div class="panel-heading">
+              
+            <!--   <p style="text-align: center;"><button class="btn btn-theme" style="background-color: #5bc0de !important; "><i class="fa "></i> Click Here for the Leader Board</button></p> -->
+
+               
+                
+              </ul>
+            </div>
+        <div class="row mt">
+          <div class="col-lg-12">
+            <h3><i class="fa fa-angle-right"></i> Stage Three Task</h3>
+            {% with messages=get_flashed_messages()%}
+              {% if messages %}
+              
+              {% for message in messages %}
+              <div class="alert">
+                  <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>  -->
+                   {{message}}.
+              </div>
+              {% endfor %}
+              {% endif %}
+            {% endwith %}
+            <div class="detailed mt" style="text-align: justify;margin: 5px;"><b>Level 3:  End of Thanos( Destroy Stones)</b><br><br>
+ 
+<b>Project:</b>Create a project to demonstrate the End of Thanos means destroying the stones  using the IoT electronic components present in Wokwi virtual platform.
+</div>
+            <div class="form-panel">
+              <form role="form" class="form-horizontal style-form" action="" method="post" enctype = "multipart/form-data">
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Project Description</label>
+                  <div class="col-lg-10">
+                    <textarea type="" placeholder="" id="f-name" class="form-control" name="projectDescription" required></textarea>
+                    <!-- <p class="help-block">Successfully done</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Code Screenshot</label>
+                  <div class="col-lg-10">
+
+                    <input type="file" placeholder="" id="f-name" class="form-control" name="codeScreenshot" required>
+                    <!-- <p class="help-block">Aha you gave a wrong info</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Circute Diagram Screenshot</label>
+                  <div class="col-lg-10">
+                    
+                    <input type="file" placeholder="" id="f-name" class="form-control" name="circuteDiagramScreenshot" required>
+                    <!-- <p class="help-block">Aha you gave a wrong info</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Final Project Demonstration Video</label>
+                  <div class="col-lg-10">
+                    <input type="file" placeholder="" id="f-name" class="form-control" name="finalProjectVideo" required>
+                    <!-- <p class="help-block">Something went wrong</p> -->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+      </div>
+</div>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+</body>

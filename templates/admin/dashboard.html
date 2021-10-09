@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<title>Admin Dashboard</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='dashboard/css/admin_dashboard.css') }}">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+</head>
+<body>
+	<input type="checkbox" id="nav-toggle">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="lab la-accusoft"></span> <span>Coding Academy</span></h2>
+		</div>
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a href="" class="active"><span class="las la-igloo"></span><span>Dashboard</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('adminDashboard')}}" class="active"><span class="las la-users"></span><span>Students</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('stageOneDataPage')}}" class="active"><span class="las la-users"></span><span>StageOne</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('stageTwoDataPage')}}" class="active"><span class="las la-users"></span><span>StageTwo</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('stageThreeDataPage')}}" class="active"><span class="las la-users"></span><span>StageThree</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('studentLevelOneLeaderBoardPage')}}" class="active"><span class="las la-users"></span><span>Stage One Leaderboard</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('studentLevelTwoLeaderBoardPage')}}" class="active"><span class="las la-users"></span><span>Stage Two Leaderboard</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('studentLevelThreeLeaderBoardPage')}}" class="active"><span class="las la-users"></span><span>Stage Three Leaderboard</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('studentLevelOverallLeaderBoardPage')}}" class="active"><span class="las la-users"></span><span>Overall Leaderboard</span></a>
+				</li>
+
+				<li>
+					<a href="" class="active"><span class="las la-igloo"></span><span>SignOut</span></a>
+				</li>
+
+				<!-- <li>
+					<a href="" class="active"><span class="las la-clipboard-list"></span><span>Tasks</span></a>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="main-content">
+		<header>
+			<h1>
+				<label for="nav-toggle"><span class="las la-bars"></span>
+				</label>Dashboard
+			</h1>
+
+			<div class="search-wrapper">
+				<span class="las la-search"></span>
+				<input type="search" placeholder="Search Here"/>
+			</div>
+
+			<div class="user-wrapper">
+				<img src="{{url_for('static', filename='images/endgame.jpg')}}" width="40px" height="40px" alt="">
+				<div>
+					<h4>{{admin_data.userName}}</h4>
+					<small>{{admin_data.email}}</small>
+				</div>
+			</div>
+
+		</header>
+
+		<main>
+			<div class="cards">
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageOne}}</h1>
+						<span>Stage One</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageTwo}}</h1>
+						<span>Stage Two</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageThree}}</h1>
+						<span>Stage Three</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.registeredStudent}}</h1>
+						<span>Total Students</span>
+					</div>
+
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+
+				<!-- <div class="card-single">
+					<div>
+						<h1>$6k</h1>
+						<span>Amount</span>
+					</div>
+
+					<div>
+						<span class="lab la-google-wallet"></span>
+					</div>
+				</div> -->
+
+			</div>
+
+			<div class="recent-grid">
+				<div class="projects">
+					<div class="card">
+						<div class="card-header">
+							<h3>Students Data</h3>
+							<!-- <button>See all<span class="las la-arrow-right"></span></button> -->
+						</div>
+						
+						<div class="card-body">
+							<div class="table-responsive"><table width="100%">
+								<thead>
+									<tr>
+										<td>First Name</td>
+										<td>Last Name</td>
+										<td>Class</td>
+										<!-- <td>Phone></td> -->
+										
+										
+										<td>Level One Total</td>
+										<td>Level Two Total</td>
+										<td>Level Three Total</td>
+										
+
+										<td>Status</td>
+									</tr>
+								</thead>
+								{% for t in total_data %}
+								<tbody>
+									<tr>
+										<td>{{t.firstName}}</td>
+                      					<td>{{t.lastName}}</td>
+                      					<td>{{t.className}}</td>
+                      					
+                      					<td>{{t.levelOneTotalMarks}}</td>
+                      					<td>{{t.levelTwoTotalMarks}}</td>
+                      					<td>{{t.levelThreeTotalMarks}}</td>
+
+										{% if t.status==3 %}
+										<td><span class="status green"></span>StageThree/Completed</td>
+										{% elif t.status==0 %}
+										<td><span class="status orange"></span>InCompleted</td>
+										{% elif t.status==1 %}
+										<td><span class="status pink"></span>StageOne Completed</td>
+										{% elif t.status==2 %}
+										<td><span class="status purple"></span>StageTwo Completed</td>
+										{% endif %}
+									</tr>
+										
+								</tbody>
+								{% endfor %}
+							</table>
+						</div>
+							
+						</div>	
+
+					</div>
+				</div>
+			</div>
+		</main>
+	</div>
+</body>
+</html>
+<!-- 
+
+				<div class="customers">
+					<div class="card">
+						<div class="card-header">
+							<h3>New Customer</h3>
+							<button>See all<span class="las la-arrow-right"></span></button>
+						</div>
+
+						<div class="card-body">
+
+							<div class="customer">
+								<div class="info">
+									<img src="{{url_for('static', filename='index_img/bg.svg')}}" width="40px" height="40px" alt="">
+
+									<div>
+										<h4>Saral Kumar</h4>
+										<small>CEO</small>
+									</div>
+									<div class="contact">
+										<span class="las la-user"></span>
+										<span class="las la-comment"></span>
+										<span class="las la-phone"></span>
+									</div>
+								</div>
+
+								<div>
+									<img src="{{url_for('static', filename='index_img/bg.svg')}}" width="40px" height="40px" alt="">
+
+									<div>
+										<h4>Kumar</h4>
+										<small>CEO</small>
+									</div>
+									<div>
+										<span class="las la-user"></span>
+										<span class="las la-comment"></span>
+										<span class="las la-phone"></span>
+									</div>
+								</div> -->
+								
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</main>
+	</div>
+
+</body>
+</html> -->

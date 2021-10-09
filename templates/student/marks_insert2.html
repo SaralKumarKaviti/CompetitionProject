@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Student Exam</title>
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/style-responsive.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/style.css')}}">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/templatemo_main.css')}}">
+  <style>
+
+.content-panel {
+  background: #d1c3c3;
+    box-shadow: 0px 3px 2px #aab2bd;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    opacity: 0.8;
+}
+.wrapper{
+    margin-top: 0px !important;
+}
+.newclass{
+  display: flex;
+  width: 100%;
+}
+@media screen and (max-width: 750px) {
+    
+.newclass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-panel {
+  background: #d1c3c3;
+    box-shadow: 0px 3px 2px #aab2bd;
+    padding-top: 15px;
+    padding-bottom: 5px;
+    opacity: 0.8;
+}
+}
+body {
+  background:floralwhite;
+  background-image:url("{{url_for('static',filename='student/leaderboard/img/1.jpg')}}");
+}
+  </style>
+  
+</head>
+<body>
+<section  style="width: 100%;" >
+    <section class="wrapper site-min-height">
+      
+        <div class="col-lg-12 mt">
+          <div class="row content-panel">
+            <div class="panel-heading">
+              
+            <!--   <p style="text-align: center;"><button class="btn btn-theme" style="background-color: #5bc0de !important; "><i class="fa "></i> Click Here for the Leader Board</button></p> -->
+
+               
+                
+              </ul>
+            </div>
+        <div class="row mt">
+          <div class="col-lg-12">
+            <h3><i class="fa fa-angle-right"></i> Stage Two Task Marks</h3>
+            <div class="detailed mt" style="text-align: justify;margin: 5px;"><b>Level 2:  Thor Hammer( Creating Thunder)</b><br><br>
+
+            <div class="form-panel">
+              <form role="form" class="form-horizontal style-form" action="" method="post" enctype = "multipart/form-data">
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Project Description Marks</label>
+                  <div class="col-lg-10">
+                    <input type="text" placeholder="Project Description Marks" id="f-name" class="form-control" name="levelTwoMarks1" >
+                    <!-- <textarea type="" placeholder="" id="f-name" class="form-control" name="levelOneMarks1" required></textarea> -->
+                    <!-- <p class="help-block">Successfully done</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Code Screenshot Marks</label>
+                  <div class="col-lg-10">
+
+                    <input type="text" placeholder="Code Screenshot Marks" id="f-name" class="form-control" name="levelTwoMarks2" >
+                    <!-- <p class="help-block">Aha you gave a wrong info</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Circute Diagram Screenshot Marks</label>
+                  <div class="col-lg-10">
+                    
+                    <input type="text" placeholder="Circute Diagram Screenshot Marks" id="f-name" class="form-control" name="levelTwoMarks3">
+                    <!-- <p class="help-block">Aha you gave a wrong info</p> -->
+                  </div>
+                </div>
+                <div class="form-group has-success">
+                  <label class="col-lg-2 control-label">Final Project Demonstration Video Marks</label>
+                  <div class="col-lg-10">
+                    <input type="text" placeholder="Final Project Demonstration Video Marks" id="f-name" class="form-control" name="levelTwoMarks4" required>
+                    <!-- <p class="help-block">Something went wrong</p> -->
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-theme" type="submit">Submit</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- /form-panel -->
+          </div>
+          <!-- /col-lg-12 -->
+        </div>
+      </div>
+</div>
+</section>
+</section>
+</div>
+
+
+
+
+
+
+</body>

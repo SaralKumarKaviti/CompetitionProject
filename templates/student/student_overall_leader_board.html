@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Leader Board</title>
+  <!-- <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="lib/bootstrap/css/style-responsive.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css"> -->
+  <link href="{{url_for('static',filename='student/leaderboard/lib/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='student/leaderboard/lib/bootstrap/css/style-responsive.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  <link rel="stylesheet" href="{{url_for('static',filename='student/leaderboard/css/templatemo_main.css')}}">
+  <style>
+
+
+.wrapper{
+    margin-top: 0px !important;
+}
+.recent-activity{
+    display: flex !important;
+}
+.newclass{
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (max-width: 750px) {
+    .recent-activity{
+    display: flex !important;
+    flex-direction: column;
+}
+.newclass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+#leaderboard {
+      padding-left:20px !important;
+      padding-right:20px !important;
+      padding-top:40px !important;
+      padding-bottom:40px !important;
+  }
+.ladder-nav {
+      display:flex;
+      
+      flex-direction: row;
+      align-items: center;
+      background:midnightblue;
+     
+      
+      border: 1px solid #686EF9;
+      opacity: 91%;
+      color: #f1f1f1;
+      min-width:166%;
+  }
+  .ladder-title {
+    flex:1;
+  }
+  .ladder-search {
+    flex:1;
+    padding-right:25px;
+  }
+}
+* {
+  margin:0;
+  padding:0;
+  font-family:Helvetica, Arial, sans-serif;
+}
+body {
+  background:floralwhite;
+  background-image:url("{{url_for('static',filename='student/leaderboard/img/avng.jpg')}}");
+}
+input[type=text], textarea, input[type=email], input[type=password], input[type=tel], input[type=url], input[type=search], input[type=date] {
+    padding: 10px;
+    width: 100%;
+    font-size: 14px;
+    font-family: inherit;
+    line-height: 24px;
+    color: #555;
+    background-color: #f1f1f1;
+    border: none;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+}
+input[type=text], textarea, input[type=email], input[type=password], input[type=tel], input[type=url], input[type=search], input[type=date], .material.woocommerce-page[data-form-style="default"] input#coupon_code {
+        border-radius: 4px;
+    border: 2px solid rgba(0,0,0,0);
+}
+/* /end Codepen Specific */
+/* Ladder Navigation */
+  #leaderboard {
+      padding:50px;
+  }
+  .ladder-nav {
+      display:flex;
+      flex-wrap:wrap;
+      align-items: center;
+      background:midnightblue;
+      padding:10px 25px;
+      border-radius:10px;
+      border:1px solid #686EF9;
+      opacity: 91%;
+      color: #f1f1f1;
+  }
+  .ladder-title {
+    flex:2;
+  }
+  .ladder-search {
+    flex:1;
+    padding-right:25px;
+  }
+  .ladder-title {
+    font-size:20px;
+    color:#f1f1f1!important;
+    font-weight:bold;
+    text-transform:uppercase;
+
+  }
+  .ladder-search input {
+      color:white
+  }
+  .ladder-search input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+      color: #060eaf;
+  }
+  .ladder-search input::-moz-placeholder { /* Firefox 19+ */
+      color: #888DFF;
+  }
+  .ladder-search input:-ms-input-placeholder { /* IE 10+ */
+      color: #888DFF;
+  }
+  .ladder-search input:-moz-placeholder { /* Firefox 18- */
+      color: #888DFF;
+  }
+/* /end Ladder Navigation */
+/* Leaderboard Results */
+.leaderboard-results {
+  text-align:left;
+  border-collapse: collapse;
+}
+.leaderboard-results thead th {
+  padding: 25px;
+  color:mintcream;
+  font-size:14px;
+  font-weight:bold;
+  background-color: midnightblue;
+  opacity: 91%;
+}
+.leaderboard-results tbody td {
+  padding:15px 25px;
+  background:rgba(57, 44, 167, 0.581);
+  font-size:16px;
+  border-bottom:5px solid #232323;
+  font-weight:bold;
+}
+.leaderboard-results tbody td:nth-of-type(7) {
+  font-weight:bold;
+}
+.leaderboard-results tbody tr:hover td {
+    background:midnightblue;
+}
+.leaderboard-results tbody tr {
+  color:seashell;
+}
+.leaderboard-results tbody tr:first-child {
+  color:seashell;
+}
+.leaderboard-results tbody span {
+  font-weight:bold;
+  padding:10px 15px;
+  border-radius:50%;
+}
+.leaderboard-results tbody tr:first-child span {
+  background:#5055CB;
+  color:white;
+}
+.leaderboard-results tbody tr span {
+  background:#262626;
+  color:#747474;
+}
+/* /end Leaderboard Results */
+  </style>
+  
+</head>
+<body>
+    <div class="container-wrap" >
+        <section id="leaderboard">
+          <nav class="ladder-nav">
+            <div class="ladder-title">
+              <h1>Overall Standings</h1>
+            </div>
+            <!-- <div class="ladder-search">
+              <input type="text" id="search-leaderboard" class="live-search-box" placeholder="Search Team, Player..." />
+            </div> -->
+          </nav>
+          <table id="rankings" class="leaderboard-results" width="100%">
+            <thead>
+              <tr>
+                <th>Full Name</th>
+                <th>Class</th>
+                <th>Roll Number</th>
+                <th>Rank</th>
+                <th>Total Marks</th>
+                <th>Medal</th>
+                
+              </tr>
+            </thead>
+            <!-- {% for lo in level_one %}
+            <tbody>
+              
+             <tr>
+                 <td>{{lo.fullName}}</td>  
+                 <td>{{lo.className}}</td>  
+                 <td>{{lo.rollNumber}}</td>  
+                 <td>{{lo.rank}}</td>  
+                 <td>{{lo.levelOneTotalMarks}}</td>
+                 {% if lo.rank==1 %}  
+                 <td><img src="{{url_for('static',filename='student/leaderboard/img/first.png')}}"/></td>
+                 {% elif lo.rank==2 %}
+                 <td><img src="{{url_for('static',filename='student/leaderboard/img/second.png')}}"/></td>
+                 {% elif lo.rank==3 %}
+                 <td><img src="{{url_for('static',filename='student/leaderboard/img/third.png')}}"/></td>
+                 {% else %}
+                 <td></td>
+                 {% endif %}
+
+
+             </tr>
+             
+            </tbody>
+            {% endfor %} -->
+          </table>
+        </section>
+        <script type="javascript">
+            const rankingsBody = document.querySelector("#rankings > tbody");
+
+            function loadRankings() {
+              const request = new XMLHttpRequest();
+            
+              request.open("get", "https://codepen.io/imisterk/pen/MLgwOa.js");
+              request.onload = () => {
+                try {
+                  const json = JSON.parse(request.responseText);
+                  populateRankings(json);
+                } catch (e) {
+                  console.warn("Could not load Player Rankings! :(");
+                }
+              };
+            
+              request.send();
+            }
+            
+            function populateRankings(json) {
+              // Populate Leaderboard
+              json.forEach((row) => {
+                const tr = document.createElement("tr");
+            
+                row.forEach((cell) => {
+                  const td = document.createElement("td");
+                  td.textContent = cell;
+                  tr.appendChild(td);
+                });
+            
+                rankingsBody.appendChild(tr);
+              });
+            }
+            
+            document.addEventListener("DOMContentLoaded", () => {
+              loadRankings();
+            });
+            
+            $("#search-leaderboard").keyup(function () {
+              var value = this.value;
+            
+              $("table")
+                .find("tr")
+                .each(function (index) {
+                  if (index === 0) return;
+            
+                  var if_td_has = false;
+                  $(this)
+                    .find("td")
+                    .each(function () {
+                      if_td_has = if_td_has || $(this).text().indexOf(value) !== -1; //Check if td's text matches key and then use OR to check it for all td's
+                    });
+            
+                  $(this).toggle(if_td_has);
+                });
+            });
+            
+
+
+            
+        </script>
+  </body>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+    <!-- <link rel="stylesheet" href="static/style.css"> -->
+    <link rel="stylesheet" href="{{url_for('static',filename='student/css/style.css')}}">
+    <style type="text/css">
+     .alert {
+  padding: 20px;
+  background-color: #c0c0c0;
+  color: green;
+  font-family: sans-serif,serif;
+  font-size: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+</head>
+<body>
+    <div class="main">
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <!-- <img src="static/images/endgame.jpg" alt=""> -->
+                     <image src="{{url_for('static',filename = 'images/final.jpg')}}" >
+                </div>
+                <div class="signup-form">
+                    <form method="POST" class="register-form" id="register-form" enctype="multipart/form-data">
+                        <h2>Registration form</h2>
+                        {% with messages=get_flashed_messages()%}
+                        {% if messages %}
+                        
+                        {% for message in messages %}
+                        <div class="alert">
+                            <!-- <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>  -->
+                             {{message}}.
+                        </div>
+                        {% endfor %}
+                        {% endif %}
+                        {% endwith %}
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">First Name :</label>
+                                <input type="text" name="firstName" id="name" required/>
+                            </div>
+                            <div class="form-group">
+                                <label for="last_name">Last Name :</label>
+                                <input type="text" name="lastName" id="last_name" required/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="school">School Name :</label>
+                            <input type="text" name="schoolName" id="school" required/>
+                        </div>
+                        <!-- <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Gender</label>
+                                    <div class="p-t-10">
+                                        <label class="radio-container m-r-30">Male
+                                            <input type="radio" checked="checked" name="gender" value="Male">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Female
+                                            <input type="radio" name="gender" value="Female">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <label class="radio-container">Others
+                                            <input type="radio" name="gender" value="Others">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div> -->
+                        <div class="form-radio">
+                            <label for="gender" class="radio-label">Gender :</label>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="male" value="Boy">
+                                <label for="male">Boy</label>
+                                <span class="check"></span>
+                            </div>
+                            <div class="form-radio-item">
+                                <input type="radio" name="gender" id="female" value="Girl">
+                                <label for="female">Girl</label>
+                                <span class="check"></span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="classes">Class:</label>
+                                <div class="form-classes">
+                                    <select name="className" id="classes">
+                                        <option value="None">None</option>
+                                        <option value="7">7</option>
+                                        <option value="8">8</option>
+                                        <option value="9">9</option>
+                                        <option value="10">10</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="section">Section :</label>
+                                <div class="form-section">
+                                    <select name="sectionName" id="section">
+                                        <option value="None">None</option>
+                                        <option value="A">Section-A</option>
+                                        <option value="B">Section-B</option>
+                                    </select>
+                                    <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="form-group">
+                            <label for="rollno">Roll No :</label>
+                            <input type="text" name="rollNumber" id="rollno">
+                        </div>
+                        <div class="form-group">
+                            <label for="birth_date">DOB :</label>
+                            <input type="date" name="dateOfBirth" id="birth_date">
+                        </div>
+                       
+                        <!-- <div class="form-group">
+                            <label for="course">Course :</label>
+                            <div class="form-select">
+                                <select name="course" id="course">
+                                    <option value=""></option>
+                                    <option value="computer">Computer Operator & Pragramming Assistant</option>
+                                    <option value="desiger">Designer</option>
+                                    <option value="marketing">Marketing</option>
+                                </select>
+                                <span class="select-icon"><i class="zmdi zmdi-chevron-down"></i></span>
+                            </div>
+                        </div> -->
+                        <div class="form-group">
+                            <label for="phone">Phone Number :</label>
+                            <input type="text" name="phoneNumber" id="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email ID :</label>
+                            <input type="email" name="emailId" id="email" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Password :</label>
+                            <input type="password" name="password" id="password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="profilepic">Profile Pic :</label>
+                            <input type="file" name="profilePic" id="profilepic" />
+                        </div>
+                        <div class="form-submit">
+                            <a href="{{url_for('studentLoginPage')}}"><input type="button" value="Login" class="submit" name="reset" id="reset" /></a>
+                            <!-- If Already Registered <a href="{{url_for('studentLoginPage')}}">Login</a> -->
+                            <input type="submit" value="Submit Form" class="submit" name="submit" id="submit" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="{{url_for('static',filename='student/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static',filename='student/js/main.js')}}"></script>
+    <script src="{{url_for('static',filename='student/js/reg.js')}}"></script>
+</html>

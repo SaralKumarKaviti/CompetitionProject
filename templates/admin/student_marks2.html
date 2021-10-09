@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='dashboard/css/admin_dashboard.css') }}">
+    <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+    <style>
+        img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+    }
+
+img:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
+.recent-grid {
+    margin-top: 3.5rem;
+    display: flex !important;
+    grid-gap: 2rem;
+    grid-template-columns: 60% auto;
+    
+}
+#main-area{
+    width:100%;
+height:100px;
+margin: 0 auto;
+
+display:flex;
+flex-direction :row;
+justify-content:space-evenly;
+}
+
+#main-area div{
+    width:250px;
+    height:100px;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 5px 10px #ddd;
+    border-radius: 21px;
+   }
+    </style>
+</head>
+<body>
+    <section>
+        <input type="checkbox" id="nav-toggle">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2><span class="lab la-accusoft"></span> <span>Coding Academy</span></h2>
+        </div>
+
+        <div class="sidebar-menu">
+            <ul>
+                <li>
+                    <a href="" class="active"><span class="las la-igloo"></span><span>Dashboard</span></a>
+                </li>
+
+                <li>
+                    <a href="" class="active"><span class="las la-users"></span><span>Students</span></a>
+                </li>
+
+                <li>
+                    <a href="" class="active"><span class="las la-users"></span><span>StageOne</span></a>
+                </li>
+
+                <li>
+                    <a href="" class="active"><span class="las la-users"></span><span>StageTwo</span></a>
+                </li>
+
+                <li>
+                    <a href="" class="active"><span class="las la-users"></span><span>StageThree</span></a>
+                </li>
+
+                <li>
+                    <a href="" class="active"><span class="las la-igloo"></span><span>SignOut</span></a>
+                </li>
+
+                <!-- <li>
+                    <a href="" class="active"><span class="las la-clipboard-list"></span><span>Tasks</span></a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+    <div class="main-content">
+        <header>
+            <h1>
+                <label for="nav-toggle"><span class="las la-bars"></span>
+                </label>Dashboard
+            </h1>
+
+            <!-- <div class="search-wrapper">
+                <span class="las la-search"></span>
+                <input type="search" placeholder="Search Here"/>
+            </div>
+
+            <div class="user-wrapper">
+                <img src="{{url_for('static', filename='images/endgame.jpg')}}" width="40px" height="40px" alt="">
+                <div>
+                    <h4></h4>
+                    <small></small>
+                </div>
+            </div> -->
+
+        </header>
+        <main>
+            <section id="main-area">
+                <div id="first">Name:<br><br>{{std_data.firstName}}</div>
+                <div id="second">Class:<br><br>{{std_data.className}}</div>
+                <div id="third">Roll No:<br><br>{{std_data.rollNumber}}</div>
+
+
+
+
+            </section>
+        <div class="recent-grid">
+            <div class="projects">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 >Paper Valuation</h3>
+                        <!-- <button>See all<span class="las la-arrow-right"></span></button> -->
+                    </div>
+                    <form action="" method="post"><div class="card-body">
+                        <div class="table-responsive"><table width="900px">
+                            <thead>
+                                <tr>
+                                    <td>S.no</td>
+                                    <td>Question/Files</td>
+                                    <!-- <td>Marks</td> -->
+                                   
+                                </tr>
+                            </thead>
+                            <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>{{task_data.projectDescription}}</td>
+                                        <td style="vertical-align: middle !important;padding-top: 94px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td><a target="_blank" href="{{ url_for('send_uploaded_file', filename=task_data.codeScreenshot) }}">
+                                            <img src="{{ url_for('send_uploaded_file', filename=task_data.codeScreenshot) }}" alt="Forest" style="width:350px">
+                                          </a></td>
+                                        <td style="vertical-align: middle !important;padding-top: 94px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td><a target="_blank" href="{{ url_for('send_uploaded_file', filename=task_data.circuteDiagramScreenshot) }}">
+                                            <img src="{{ url_for('send_uploaded_file', filename=task_data.circuteDiagramScreenshot) }}" alt="Forest" style="width:350px">
+                                          </a></td>
+                                        <td style="vertical-align: middle !important;padding-top: 94px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>4</td>
+                                        <td> <video width="350" 
+                                            height="200" 
+                                            controls poster="">
+                                 
+                                         <source src="{{ url_for('send_uploaded_file', filename=task_data.finalProjectVideo) }}"
+                                 
+                                                 type="video/mp4">
+                                     </video></td>
+                                        <td style="vertical-align: middle !important;padding-top: 94px;"></td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td>5</td>
+                                        <td style="font-size: 30px; text-align: center;">Total</td>
+                                        <td ><input type="text" name="levelOneTotalMarks"></td>
+                                    </tr> -->
+                                    <tr>
+                                        <td></td>
+                                        <td style="font-size: 30px; text-align: center;"><a href="{{url_for('stageTwoMarksPage',link=link)}}"><input type="button" value="Click for Entering Marks"></a></td>
+                                        <td ></td>
+                                    </tr>
+                                    
+
+
+                            </tbody>
+                            
+                        </table>
+                    </div>
+                        
+                    </div>  
+                </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    </section>
+    
+
+
+</body>

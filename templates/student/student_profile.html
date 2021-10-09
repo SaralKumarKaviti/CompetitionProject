@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  
+  <title>Student Dashboard</title>
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{url_for('static',filename='student_profile/bootstrap/css/style-responsive.css')}}" rel="stylesheet">
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/style.css')}}">
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="viewport" content="width=device-width">        
+  <link rel="stylesheet" href="{{url_for('static',filename='student_profile/css/templatemo_main.css')}}">
+  <style>
+
+
+.wrapper{
+    margin-top: 0px !important;
+}
+.recent-activity{
+    display: flex !important;
+}
+.newclass{
+  display: flex;
+  width: 100%;
+}
+
+@media screen and (max-width: 750px) {
+    .recent-activity{
+    display: flex !important;
+    flex-direction: column;
+}
+.newclass{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+}
+
+.alert {
+  padding: 10px;
+  background-color: #c0c0c0;
+  color: red;
+  font-family: sans-serif,serif;
+  font-size: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+  </style>
+  
+</head>
+<body>
+  
+    
+    
+
+
+<section  style="width: 100%;" >
+    <section class="wrapper site-min-height">
+      <div class="row mt">
+        <div class="col-lg-12 ">
+          <form role="form" class="form-horizontal style-form" action="" method="post">
+          <div class="row content-panel newclass">
+            <div class="col-md-4 profile-text mt mb centered">
+              <div class="right-divider ">
+                <h4 style="color: midnightblue !important; ">{{student.sectionName}}</h4>
+                <h6 style="color: midnightblue !important; ">Section</h6>
+                <h4 style="color: midnightblue !important; ">{{student.rollNumber}}</h4>
+                <h6 style="color: midnightblue !important; ">Roll No</h6>
+                <h4 style="color: midnightblue !important; ">{{student.schoolName}}</h4>
+                <h6 style="color: midnightblue !important; ">School Name</h6>
+             
+              </div>
+
+            </div>
+            <!-- /col-md-4 -->
+            <div class="col-md-4 profile-text">
+              <h4 style="color: midnightblue !important; "><b>{{student.firstName}} {{student.lastName}}</b></h4>
+              <h4 style="color: midnightblue !important; ">Gender : {{student.gender}}</h4>
+              <h4 style="color: midnightblue !important; ">Date of birth : {{student.dateOfBirth}}</h4>
+              <h4 style="color: midnightblue !important; ">Phone Number : {{student.phoneNumber}}</h4>
+              <h4 style="color: midnightblue !important; ">Email id : {{student.emailId}}</h4>
+              
+              <br>
+              <!-- <p><button class="btn btn-theme" style="background-color: #5bc0de !important; "><i class="fa fa-envelope"></i> Send Message</button></p> -->
+            </div>
+            <!-- /col-md-4 -->
+            <div class="col-md-4 centered">
+              <div class="profile-pic">
+                <p><img src="{{ url_for('send_uploaded_file', filename=student.profilePic) }}" class="img-circle"/></p>
+                <!-- <img src="/static/uploads/profilePic/615db8eeb1a1839653fec7a1.jpeg" class="img-circle"/> -->
+                <p>
+                  <!-- <button class="btn btn-theme" style="background-color: #5bc0de !important; "><i class="fa fa-check"></i> Follow</button> -->
+                  <!-- <button class="btn btn-theme02" style="background-color: #5bc0de !important; ">Add</button> -->
+                </p>
+              </div>
+            </div>
+            <!-- /col-md-4 -->
+          </div>
+          <!-- /row -->
+        </div>
+        
+        <div class="col-lg-12 mt">
+            <div class="row content-panel">
+              <div class="panel-heading">
+                
+                
+                <div class="panel-body">
+                <div class="tab-content">
+                  <div id="overview" class="tab-pane active">
+                    <div class="row">
+                      <div class="col-md-12">
+                        
+                        
+                        <div class="detailed mt">
+                          <h4 style="color: midnightblue !important;">Leaderboard Activity</h4>
+                          
+                          <div class="recent-activity">
+                            <div class="activity-icon bg-theme04"><i class="fa fa-trophy"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-1</h5>
+                              <b><p>Avenger's The Age of Ultron</p></b>
+                              <!-- <p>{{student}}</p> -->
+                              <!-- <p>hello</p> -->
+                              <!-- <h5><font color="red">Completed</font></h5> -->
+                              
+                            
+                              <!-- {% if student.stageExamOneStatus==1 %}
+                              
+                              <h3>Completed</h3> 
+                              {% else %}
+                              <a href="{{url_for('studentWriteExamStageOnePage',link=link)}}"><h3>Click Here</h3></a>
+                               
+                              
+                              {% endif %} -->
+                              <a href="{{url_for('studentLevelOneLeaderBoardPage')}}"><h3>Leaderboard</h3></a>
+                            </div>
+                            <div class="activity-icon bg-theme04"><i class="fa fa-trophy"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-2</h5>
+                              <b><p>Avenger's Infinity War</p></b>
+                              
+                              <a href="{{url_for('studentLevelTwoLeaderBoardPage')}}"><h3>Leaderboard</h3></a>
+                               
+                              
+                            </div>
+
+                            <div class="activity-icon bg-theme04"><i class="fa fa-trophy"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-3</h5>
+                              <b><p>Avenger's Endgame</p></b> 
+                              
+                              <a href="{{url_for('studentLevelThreeLeaderBoardPage')}}"><h3>Leaderboard</h3></a>
+                               
+                              
+                            </div>
+
+                            <div class="activity-icon bg-theme04"><i class="fa fa-trophy"></i></div>
+                            <div class="activity-panel">
+                              <h5>Overall</h5>
+                              <b><p>Endgame</p></b> 
+                              
+                              <a href="{{url_for('studentLevelOverallLeaderBoardPage')}}"><h3>Leaderboard</h3></a>
+                               
+                              
+                            </div>
+                          </div>
+
+
+                          <!-- /recent-activity -->
+                        </div>
+                        <!-- /detailed -->
+                      </div>
+                      <!-- /col-md-6 -->
+                      
+                          <!-- /col-md-8 -->
+                        </div>
+                        <!-- /row -->
+                      </div>
+                      <!-- /col-md-6 -->
+                    </div>
+                    <!-- /OVERVIEW -->
+                  </div>
+                  <!-- /tab-pane -->
+
+                <div class="detailed mt" style="border: 5px dotted black;"><center><h2>Overview</h2>
+                <p style="text-align: justify; font-size: 18px;">Contest/Challenges  are a great way to enhance your technical skills and proficiency. They offer hands-on learning and let you apply your real time programming learning, ideas, and creativity. <br>Here is an opportunity to improve your analytical skills,Logical skills and compete with the best techies out there!</p><br>
+                <p style="text-align: justify; font-size: 18px;">Contest of champions  is an online competition with the Avengers Theme in which students can participate individually. So don't miss out on this opportunity to learn, compete, and win exciting rewards.
+</p>
+  <h2>Themes & Projects</h2>
+ 
+<p style="text-align: justify; font-size: 18px;">The competition is divided into three Levels:</p>
+
+    
+
+                </center>
+              </div>
+
+
+                 
+                  
+                </ul>
+              </div>
+              <hr>
+              <!-- /panel-heading -->
+              <div class="panel-body">
+                <div class="tab-content">
+                  <div id="overview" class="tab-pane active">
+                    <div class="row">
+                      <div class="col-md-12">
+                        
+                        
+                        <div class="detailed mt">
+                          <h4 style="color: midnightblue !important;">Recent Activity</h4>
+                           {% with messages=get_flashed_messages() %}
+                                    {% if messages %}
+                                      {% for message in messages %}
+                                    <div class="alert">
+                                      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                                        <h3>{{message}}.</h3>
+                                      </div>
+                                {% endfor %}
+                            {% endif %}
+                          {% endwith %}
+                          <div class="recent-activity">
+                            <div class="activity-icon bg-theme"><i class="fa fa-check"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-1</h5>
+                              <b><p>Avenger's The Age of Ultron</p></b>
+                              <!-- <p>{{student}}</p> -->
+                              <!-- <p>hello</p> -->
+                              <!-- <h5><font color="red">Completed</font></h5> -->
+                              
+                            
+                              {% if student.stageExamOneStatus==1 %}
+                              
+                              <h3><font color="red">Completed</font></h3> 
+                              {% else %}
+                              <a href="{{url_for('studentWriteExamStageOnePage',link=link)}}"><h3>Click Here</h3></a>
+                               
+                              
+                              {% endif %}
+                              <!-- <a href="{{url_for('studentWriteExamStageOnePage',link=link)}}"><h3>Click Here</h3></a> -->
+                            </div>
+                            <div class="activity-icon bg-theme02"><i class="fa fa-trophy"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-2</h5>
+                              <b><p>Avenger's Infinity War</p></b>
+                              {% if student.stageExamTwoStatus==1 %}
+                              
+                              <h3><font color="red">Completed</font></h3> 
+                              {% else %}
+                              <a href="{{url_for('studentWriteExamStageTwoPage',link=link)}}"><h3>Click Here</h3></a>
+                               
+                              
+                              {% endif %}
+                            </div>
+                            <div class="activity-icon bg-theme04"><i class="fa fa-rocket"></i></div>
+                            <div class="activity-panel">
+                              <h5>Level-3</h5>
+                              <b><p>Avenger's Endgame</p></b> 
+                              {% if student.stageExamThreeStatus==1 %}
+                              
+                              <h3><font color="red">Completed</font></h3> 
+                              {% else %}
+                              <a href="{{url_for('studentWriteExamStageThreePage',link=link)}}"><h3>Click Here</h3></a>
+                               
+                              
+                              {% endif %}
+                            </div>
+                          </div>
+                          <!-- /recent-activity -->
+                        </div>
+                        <!-- /detailed -->
+                      </div>
+                      <!-- /col-md-6 -->
+                      
+                          <!-- /col-md-8 -->
+                        </div>
+                        <!-- /row -->
+                      </div>
+                      <!-- /col-md-6 -->
+                    </div>
+                    <!-- /OVERVIEW -->
+                  </div>
+                  <!-- /tab-pane -->
+           
+      </form>
+    </div>
+  </div>
+</section>
+</section>
+</body>
+</html>
+

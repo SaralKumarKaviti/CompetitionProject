@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+	<title>Admin Dashboard</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='dashboard/css/admin_dashboard.css') }}">
+	<link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+	<style type="text/css">
+		.alert {
+  padding: 10px;
+  background-color: #c0c0c0;
+  color: red;
+  font-family: sans-serif,serif;
+  font-size: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+</style>
+
+</head>
+<body>
+	<input type="checkbox" id="nav-toggle">
+	<div class="sidebar">
+		<div class="sidebar-brand">
+			<h2><span class="lab la-accusoft"></span> <span>Coding Academy</span></h2>
+		</div>
+
+		<div class="sidebar-menu">
+			<ul>
+				<li>
+					<a href="{{url_for('adminDashboard')}}" class="active"><span class="las la-igloo"></span><span>Dashboard</span></a>
+				</li>
+
+				<li>
+					<a href="" class="active"><span class="las la-users"></span><span>Students</span></a>
+				</li>
+
+				<!-- <li>
+					<a href="{{url_for('stageOneDataPage')}}" class="active"><span class="las la-users"></span><span>StageOne</span></a>
+				</li> -->
+
+				<li>
+					<a href="{{url_for('stageTwoDataPage')}}" class="active"><span class="las la-users"></span><span>StageTwo</span></a>
+				</li>
+
+				<li>
+					<a href="{{url_for('stageThreeDataPage')}}" class="active"><span class="las la-users"></span><span>StageThree</span></a>
+				</li>
+
+				<li>
+					<a href="" class="active"><span class="las la-user-signout"></span><span>SignOut</span></a>
+				</li>
+
+				<!-- <li>
+					<a href="" class="active"><span class="las la-clipboard-list"></span><span>Tasks</span></a>
+				</li> -->
+			</ul>
+		</div>
+	</div>
+
+
+	<div class="main-content">
+		<header>
+			<h1>
+				<label for="nav-toggle"><span class="las la-bars"></span>
+				</label>Dashboard
+			</h1>
+
+			<div class="search-wrapper">
+				<span class="las la-search"></span>
+				<input type="search" placeholder="Search Here"/>
+			</div>
+
+			<div class="user-wrapper">
+				<img src="{{url_for('static', filename='images/endgame.jpg')}}" width="40px" height="40px" alt="">
+				<div>
+					<h4>{{admin_data.userName}}</h4>
+					<small>{{admin_data.email}}</small>
+				</div>
+			</div>
+
+		</header>
+
+		<main>
+			<div class="cards">
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageOne}}</h1>
+						<span>Stage One</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageTwo}}</h1>
+						<span>Stage Two</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.stageThree}}</h1>
+						<span>Stage Three</span>
+					</div>
+
+					<div>
+						<span class="las la-clipboard"></span>
+					</div>
+				</div>
+
+
+
+				<div class="card-single">
+					<div>
+						<h1>{{countData.registeredStudent}}</h1>
+						<span>Total Students</span>
+					</div>
+
+					<div>
+						<span class="las la-users"></span>
+					</div>
+				</div>
+
+				<!-- <div class="card-single">
+					<div>
+						<h1>$6k</h1>
+						<span>Amount</span>
+					</div>
+
+					<div>
+						<span class="lab la-google-wallet"></span>
+					</div>
+				</div> -->
+
+			</div>
+
+			<div class="recent-grid">
+				<div class="projects">
+					<div class="card">
+						<div class="card-header">
+							<h3>Students Stage One Data</h3>
+							{% with messages=get_flashed_messages() %}
+                {% if messages %}
+                  {% for message in messages %}
+                <div class="alert">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                    <h3>{{message}}.</h3>
+                  </div>
+            {% endfor %}
+        {% endif %}
+      {% endwith %}
+							<!-- <button>See all<span class="las la-arrow-right"></span></button> -->
+						</div>
+						
+						<div class="card-body">
+							<div class="table-responsive"><table width="100%">
+								<thead>
+									<tr>
+										<td>First Name</td>
+										<td>Last Name</td>
+										<td>Class</td>
+										<td>Marks1</td>
+										<td>Marks2</td>
+										<td>Marks3</td>
+										<td>Marks4</td>
+										<td>Total Marks</td>
+										<!-- <td>Phone></td> -->
+										<td>Status</td>
+										<td>Paper Validation</td>
+										<td>Paper Validation Status</td>
+									</tr>
+								</thead>
+								{% for t in total_data %}
+								<tbody>
+									<tr>
+										<td>{{t.firstName}}</td>
+          					<td>{{t.lastName}}</td>
+          					<td>{{t.className}}</td>
+          					<td>{{t.levelOneMarks1}}</td>
+          					<td>{{t.levelOneMarks2}}</td>
+          					<td>{{t.levelOneMarks3}}</td>
+          					<td>{{t.levelOneMarks4}}</td>
+          					<td>{{t.levelOneTotalMarks}}</td>
+										
+										{% if t.stageExamOneStatus==1 %}
+										<td><span class="status pink"></span>StageOne Completed</td>
+										
+										{% endif %}
+
+
+										{% if t.paperValidateStatus1==1 %}
+										<td><span><i class="fas fa-sync-alt"></i></span></td>
+										<!-- <td><span><a href="{{url_for('stageOneMarksValidationViewPage',link=t.link)}}"><i class="fas fa-clipboard-check"></i> Click</a></span></td> -->
+										{% else %}
+										<td><span><a href="{{url_for('stageOneMarksValidationViewPage',link=t.link)}}"><i class="fas fa-clipboard-check"></i> Click</a></span></td>
+
+										{% endif %}
+										{% if t.paperValidateStatus1==1 %}
+										<td><span class="status green"></span>Done</td>
+										
+										{% else %}
+
+
+										<td><span class="status orange"></span>Not Done</td>
+
+
+										{% endif %}
+
+
+					
+								</tbody>
+								{% endfor %}
+							</table>
+						</div>
+							
+						</div>	
+
+					</div>
+				</div>
+<!-- 
+				<div class="customers">
+					<div class="card">
+						<div class="card-header">
+							<h3>New Customer</h3>
+							<button>See all<span class="las la-arrow-right"></span></button>
+						</div>
+
+						<div class="card-body">
+
+							<div class="customer">
+								<div class="info">
+									<img src="{{url_for('static', filename='index_img/bg.svg')}}" width="40px" height="40px" alt="">
+
+									<div>
+										<h4>Saral Kumar</h4>
+										<small>CEO</small>
+									</div>
+									<div class="contact">
+										<span class="las la-user"></span>
+										<span class="las la-comment"></span>
+										<span class="las la-phone"></span>
+									</div>
+								</div>
+
+								<div>
+									<img src="{{url_for('static', filename='index_img/bg.svg')}}" width="40px" height="40px" alt="">
+
+									<div>
+										<h4>Kumar</h4>
+										<small>CEO</small>
+									</div>
+									<div>
+										<span class="las la-user"></span>
+										<span class="las la-comment"></span>
+										<span class="las la-phone"></span>
+									</div>
+								</div> -->
+								
+							</div>
+						</div>
+					</div>
+					
+				</div> -->
+			</div>
+		</main>
+	</div>
+
+</body>
+</html>
